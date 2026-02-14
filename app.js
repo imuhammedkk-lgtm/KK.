@@ -186,8 +186,8 @@ overlay.addEventListener('click', () => toggleCart(false));
 
 searchInput.addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
-    const filtered = products.filter(p => 
-        p.title.toLowerCase().includes(term) || 
+    const filtered = products.filter(p =>
+        p.title.toLowerCase().includes(term) ||
         p.category.toLowerCase().includes(term)
     );
     displayProducts(filtered);
@@ -214,6 +214,17 @@ if (checkoutBtn) {
             alert("Your cart is empty!");
             return;
         }
+
+        // Generate Order Summary string
+        let summary = "Order Details:\n";
+        cart.forEach(item => {
+            summary += `- ${item.title} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+        });
+        const orderSummaryField = document.getElementById('order-summary');
+        if (orderSummaryField) {
+            orderSummaryField.value = summary;
+        }
+
         orderModal.classList.add('open');
         toggleCart(false); // Close cart sidebar when opening checkout
     });
@@ -230,3 +241,62 @@ window.addEventListener('click', (e) => {
         orderModal.classList.remove('open');
     }
 });
+
+// Web3Forms Order Submission Logic
+const orderForm = document.getElementById('order-form');
+if (orderForm) {
+    const orderBtn = orderForm.querySelector('.order');
+
+    orderForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(orderForm);
+        const orderBtn = orderForm.querySelector('.order');
+
+        if (!orderBtn.classList.contains('animate')) {
+            orderBtn.classList.add('animate');
+        }
+
+        // Disable button to prevent double submit during animation
+        orderBtn.disabled = true;
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Wait for animation to finish (approx 10s) or at least show it for a while
+                // The animation logic from the user snippet removes the class after 10s.
+                // We should probably wait for the animation to complete before showing the success alert/resetting.
+
+                setTimeout(() => {
+                    orderBtn.classList.remove('animate');
+                    alert("Success! Your order has been placed.");
+                    orderForm.reset();
+
+                    // Close the modal
+                    const orderModal = document.getElementById('order-modal');
+                    if (orderModal) {
+                        orderModal.classList.remove('open');
+                    }
+                    orderBtn.disabled = false;
+                }, 10000);
+
+            } else {
+                orderBtn.classList.remove('animate');
+                orderBtn.disabled = false;
+                alert("Error: " + data.message);
+            }
+
+        } catch (error) {
+            orderBtn.classList.remove('animate');
+            orderBtn.disabled = false;
+            alert("Something went wrong. Please try again.");
+            console.error(error);
+        }
+    });
+}
