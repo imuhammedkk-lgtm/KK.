@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KK | Modern Shopping Experience</title>
+    <meta name="description"
+        content="Shop the latest products with KK. Premium quality, fast delivery, and 24/7 support.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <!-- Placeholder for FA -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-left">
+                <a href="#" class="logo">KK<span>.</span></a>
+                <div class="location-picker">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="location-info">
+                        <span>Deliver to</span>
+                        <strong>Your Location</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-middle">
+                <div class="search-bar">
+                    <select class="category-select">
+                        <option>All Categories</option>
+                        <option>Electronics</option>
+                        <option>Fashion</option>
+                        <option>Home</option>
+                    </select>
+                    <input type="text" placeholder="Search for products, brands and more..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-item">
+                    <span>Hello, Guest</span>
+                    <strong>Account & Lists</strong>
+                </div>
+                <div class="nav-item">
+                    <span>Returns</span>
+                    <strong>& Orders</strong>
+                </div>
+                <div class="cart-btn" id="cart-button">
+                    <div class="cart-icon-wrapper">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <strong>Cart</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sub-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#"><i class="fas fa-bars"></i> All</a></li>
+                <li><a href="#">Best Sellers</a></li>
+                <li><a href="#">New Releases</a></li>
+                <li><a href="#">Fashion</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Home & Kitchen</a></li>
+                <li><a href="#">Customer Service</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-carousel">
+            <div class="carousel-track">
+                <div class="slide active">
+                    <div class="hero-content">
+                        <h1>Premium Tech <span>Upgrade</span></h1>
+                        <p>Explore the latest in high-performance electronics.</p>
+                        <a href="#products" class="btn-primary">Shop Now</a>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200"
+                        alt="Tech Banner">
+                </div>
+            </div>
+        </section>
+
+        <section class="categories container">
+            <div class="category-card">
+                <h3>Electronics</h3>
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=300"
+                    alt="Electronics">
+                <a href="#">Shop Now</a>
+            </div>
+            <div class="category-card">
+                <h3>Fashion</h3>
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=300"
+                    alt="Fashion">
+                <a href="#">Explore More</a>
+            </div>
+            <div class="category-card">
+                <h3>Home Decor</h3>
+                <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=300"
+                    alt="Home">
+                <a href="#">View Collection</a>
+            </div>
+            <div class="category-card">
+                <h3>Accessories</h3>
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300"
+                    alt="Accessories">
+                <a href="#">Discover</a>
+            </div>
+        </section>
+
+        <section id="products" class="products container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+            </div>
+            <div class="product-grid" id="product-list">
+                <!-- Products will be injected here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <a href="#" class="back-to-top">Back to top</a>
+        </div>
+        <div class="footer-links container">
+            <div class="footer-col">
+                <h4>Get to Know Us</h4>
+                <ul>
+                    <li><a href="#">About KK</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect with Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Let Us Help You</h4>
+                <ul>
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Returns Centre</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 KK Shopping. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/9048374145" class="whatsapp-float" target="_blank" title="Need help? Call us on WhatsApp!">
+        <i class="fab fa-whatsapp"></i>
+        <span class="pulse"></span>
+    </a>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be injected here -->
+            <p class="empty-msg">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="total-amount">$0.00</span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Order Form Modal -->
+    <div id="order-modal" class="order-modal">
+        <div class="order-container">
+            <span class="close-modal" id="close-order-modal">&times;</span>
+            <h2>KK Store - ഓർഡർ ഫോം</h2>
+            <p>ദയവായി നിങ്ങളുടെ വിവരങ്ങൾ കൃത്യമായി നൽകുക</p>
+
+            <form action="https://formspree.io/f/your_unique_id" method="POST">
+
+                <label>പൂർണ്ണമായ പേര്:</label>
+                <input type="text" name="Full_Name" placeholder="നിങ്ങളുടെ പേര്" required>
+
+                <div class="flex-row">
+                    <div>
+                        <label>ഫോൺ നമ്പർ 1:</label>
+                        <input type="tel" name="Phone_1" placeholder="9876543210" required>
+                    </div>
+                    <div>
+                        <label>ഫോൺ നമ്പർ 2 (Optional):</label>
+                        <input type="tel" name="Phone_2" placeholder="രണ്ടാമത്തെ നമ്പർ">
+                    </div>
+                </div>
+
+                <label>വീട്ടുപേര് / ബിൽഡിംഗ് നമ്പർ:</label>
+                <input type="text" name="House_Building" placeholder="വീട്ടുപേര് അല്ലെങ്കിൽ നമ്പർ" required>
+
+                <label>റോഡ് / പ്രദേശം / കോളനി:</label>
+                <input type="text" name="Area_Road_Colony" placeholder="പ്രദേശം അല്ലെങ്കിൽ റോഡിന്റെ പേര്" required>
+
+                <label>പിൻകോഡ് (Pincode):</label>
+                <input type="number" name="Pincode" placeholder="6xxxxx" required>
+
+                <div class="flex-row">
+                    <div>
+                        <label>നഗരം (City):</label>
+                        <input type="text" name="City" placeholder="നിങ്ങളുടെ നഗരം" required>
+                    </div>
+                    <div>
+                        <label>സംസ്ഥാനം (State):</label>
+                        <input type="text" name="State" placeholder="കേരളം" required>
+                    </div>
+                </div>
+
+                <button type="submit">ഓർഡർ കൺഫോം ചെയ്യുക</button>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
