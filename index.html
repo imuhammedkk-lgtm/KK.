@@ -198,46 +198,68 @@
     <div id="order-modal" class="order-modal">
         <div class="order-container">
             <span class="close-modal" id="close-order-modal">&times;</span>
-            <h2>KK Store - ഓർഡർ ഫോം</h2>
-            <p>ദയവായി നിങ്ങളുടെ വിവരങ്ങൾ കൃത്യമായി നൽകുക</p>
+            <h2>KK Store</h2>
+            <p>Complete your order by filling out the form below.</p>
 
-            <form action="https://formspree.io/f/your_unique_id" method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST" id="order-form">
 
-                <label>പൂർണ്ണമായ പേര്:</label>
-                <input type="text" name="Full_Name" placeholder="നിങ്ങളുടെ പേര്" required>
+                <input type="hidden" name="access_key" value="ac87280a-c513-4a73-b22d-0e8607f229e4">
+
+                <label>Full Name</label>
+                <input type="text" name="Full_Name" placeholder="John Doe" required>
 
                 <div class="flex-row">
                     <div>
-                        <label>ഫോൺ നമ്പർ 1:</label>
+                        <label>Phone Number 1</label>
                         <input type="tel" name="Phone_1" placeholder="9876543210" required>
                     </div>
                     <div>
-                        <label>ഫോൺ നമ്പർ 2 (Optional):</label>
-                        <input type="tel" name="Phone_2" placeholder="രണ്ടാമത്തെ നമ്പർ">
+                        <label>Phone Number 2</label>
+                        <input type="tel" name="Phone_2" placeholder="Optional">
                     </div>
                 </div>
 
-                <label>വീട്ടുപേര് / ബിൽഡിംഗ് നമ്പർ:</label>
-                <input type="text" name="House_Building" placeholder="വീട്ടുപേര് അല്ലെങ്കിൽ നമ്പർ" required>
+                <label>Order Summary</label>
+                <textarea name="Order_Summary" id="order-summary" rows="4" readonly required></textarea>
 
-                <label>റോഡ് / പ്രദേശം / കോളനി:</label>
-                <input type="text" name="Area_Road_Colony" placeholder="പ്രദേശം അല്ലെങ്കിൽ റോഡിന്റെ പേര്" required>
+                <label>House Name / Building Name & No.</label>
+                <input type="text" name="House_Building_Details" placeholder="Example: Flat 4B, KK Villa" required>
 
-                <label>പിൻകോഡ് (Pincode):</label>
-                <input type="number" name="Pincode" placeholder="6xxxxx" required>
+                <label>Road / Area / Colony</label>
+                <input type="text" name="Road_Area_Colony" placeholder="Example: MG Road, Green Colony" required>
 
                 <div class="flex-row">
                     <div>
-                        <label>നഗരം (City):</label>
-                        <input type="text" name="City" placeholder="നിങ്ങളുടെ നഗരം" required>
+                        <label>Pincode</label>
+                        <input type="text" name="Pincode" placeholder="600123" required>
                     </div>
                     <div>
-                        <label>സംസ്ഥാനം (State):</label>
-                        <input type="text" name="State" placeholder="കേരളം" required>
+                        <label>City</label>
+                        <input type="text" name="City" placeholder="City Name" required>
                     </div>
                 </div>
 
-                <button type="submit">ഓർഡർ കൺഫോം ചെയ്യുക</button>
+                <label>State</label>
+                <input type="text" name="State" value="Kerala" required>
+
+                <button class="order" type="submit">
+                    <span class="default">Complete Order</span>
+                    <span class="success">Order Placed
+                        <svg viewbox="0 0 12 10">
+                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                        </svg>
+                    </span>
+                    <div class="box"></div>
+                    <div class="truck">
+                        <div class="back"></div>
+                        <div class="front">
+                            <div class="window"></div>
+                        </div>
+                        <div class="light top"></div>
+                        <div class="light bottom"></div>
+                    </div>
+                    <div class="lines"></div>
+                </button>
 
             </form>
         </div>
