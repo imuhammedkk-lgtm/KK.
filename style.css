@@ -1199,6 +1199,7 @@ h3,
         opacity: 0;
     }
 }
+
 /* Product Gallery Modal */
 .product-modal {
     display: none;
@@ -1351,4 +1352,3 @@ h3,
 .feature i {
     color: #16a34a;
 }
-
