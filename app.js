@@ -50,6 +50,7 @@ const overlay = document.getElementById('overlay');
 const cartItemsContainer = document.getElementById('cart-items');
 const totalAmountSpan = document.getElementById('total-amount');
 const cartCountSpan = document.querySelector('.cart-count');
+const cartEta = document.getElementById('cart-eta');
 const searchInput = document.getElementById('search-input');
 
 // Initialize Products
@@ -138,6 +139,26 @@ function updateCartUI() {
 
     totalAmountSpan.innerText = `₹${total}`;
     cartCountSpan.innerText = count;
+    // Show estimated delivery in the cart footer when there are items
+    if (cartEta) {
+        if (cart.length > 0) {
+            cartEta.innerText = `Estimated delivery: ${getEstimatedDelivery(10)} (within 10 days)`;
+        } else {
+            cartEta.innerText = '';
+        }
+    }
+}
+
+// ETA helpers
+function formatDate(date) {
+    const opts = { year: 'numeric', month: 'short', day: 'numeric' };
+    return date.toLocaleDateString(undefined, opts);
+}
+
+function getEstimatedDelivery(days = 10) {
+    const now = new Date();
+    const arrival = new Date(now.getTime() + days * 24 * 60 * 60 * 1000);
+    return formatDate(arrival);
 }
 
 function removeFromCart(productId) {
