@@ -1,67 +1,41 @@
 const products = [
     {
         id: 1,
-        title: "X-Phone Pro Ultra",
-        category: "Electronics",
-        price: 999.00,
+        title: "Pet Hair Removal Glove - Universal Fit",
+        category: "Pet Supplies",
+        price: 229,
         rating: 4.8,
-        image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=500&q=80"
+        image: "https://i.postimg.cc/ZK4JY7MZ/shopping.webp",
+        images: [
+            "https://i.postimg.cc/ZK4JY7MZ/shopping.webp",
+            "https://i.postimg.cc/HnGX7D7V/61Hg-O7fsn-L-SL1024.jpg",
+            "https://i.postimg.cc/2yFbbqY5/295a2da7-6dd3-45d7-8bf7-7f3c5774277a-CR0-0-1464-600-PT0-SX1464-V1-(1).jpg"
+        ],
+        description: "Mimics the touch of your hand for a soft and relaxing massage; This flexible, slip-on grooming gloves allow you to brush away dirt, dander and loose hair from cats and dogs. Perfect for long, short and curly haired dogs, cats, horses, and other pets, grooming the hair quickly, gently and effectively; The shedding hair sticks to the glove, making it easy to peel and throw hair away."
     },
     {
         id: 2,
-        title: "SonicWave Wireless Headphones",
-        category: "Audio",
-        price: 249.50,
-        rating: 4.7,
-        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80"
+        title: "Pet Grooming Glove - Massage & Deshedding",
+        category: "Pet Grooming",
+        price: 229,
+        rating: 4.9,
+        image: "images/product2.jpg"
     },
     {
         id: 3,
-        title: "Lumina Smart Watch Series 5",
-        category: "Wearables",
-        price: 199.00,
-        rating: 4.6,
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80"
+        title: "Furniture Protection Kit",
+        category: "Home Cleaning",
+        price: 499,
+        rating: 4.7,
+        image: "images/product3.jpg"
     },
     {
         id: 4,
-        title: "Apex Gaming Laptop",
-        category: "Computers",
-        price: 1499.00,
-        rating: 4.9,
-        image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 5,
-        title: "Minimalist Desk Lamp",
-        category: "Home",
-        price: 45.00,
-        rating: 4.5,
-        image: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 6,
-        title: "Classic Leather Sneakers",
-        category: "Fashion",
-        price: 85.00,
-        rating: 4.4,
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 7,
-        title: "Organic Cotton Hoodie",
-        category: "Fashion",
-        price: 59.99,
-        rating: 4.7,
-        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-        id: 8,
-        title: "4K Action Camera",
-        category: "Electronics",
-        price: 129.00,
-        rating: 4.6,
-        image: "https://images.unsplash.com/photo-1526170375885-4d8ecbc6058c?auto=format&fit=crop&w=500&q=80"
+        title: "Adopt A Pet Starter Kit",
+        category: "Pet Care",
+        price: 999,
+        rating: 5.0,
+        image: "images/product4.jpg"
     }
 ];
 
@@ -85,16 +59,18 @@ function displayProducts(filteredProducts = products) {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-            <img src="${product.image}" alt="${product.title}" class="product-image">
+            <div class="product-image-container" onclick="openProductModal(${product.id})">
+                 <img src="${product.image}" alt="${product.title}" class="product-image">
+            </div>
             <div class="product-info">
                 <span class="product-category">${product.category}</span>
-                <h3 class="product-title">${product.title}</h3>
+                <h3 class="product-title" onclick="openProductModal(${product.id})" style="cursor:pointer">${product.title}</h3>
                 <div class="product-rating">
                     ${renderStars(product.rating)} <span>(${product.rating})</span>
                 </div>
                 <div class="product-price-row">
-                    <span class="product-price">$${product.price.toFixed(2)}</span>
-                    <button class="add-to-cart" onclick="addToCart(${product.id})">
+                    <span class="product-price">₹${product.price}</span>
+                    <button class="add-to-cart" onclick="addToCart(${product.id}); event.stopPropagation();">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -148,7 +124,7 @@ function updateCartUI() {
                 <img src="${item.image}" alt="${item.title}">
                 <div class="cart-item-info">
                     <h4>${item.title}</h4>
-                    <span class="cart-item-price">$${item.price.toFixed(2)} x ${item.quantity}</span>
+                    <span class="cart-item-price">₹${item.price} x ${item.quantity}</span>
                 </div>
                 <button onclick="removeFromCart(${item.id})" style="background:none; border:none; color:#ef4444; cursor:pointer;">
                     <i class="fas fa-trash"></i>
@@ -160,7 +136,7 @@ function updateCartUI() {
         });
     }
 
-    totalAmountSpan.innerText = `$${total.toFixed(2)}`;
+    totalAmountSpan.innerText = `₹${total}`;
     cartCountSpan.innerText = count;
 }
 
@@ -218,7 +194,7 @@ if (checkoutBtn) {
         // Generate Order Summary string
         let summary = "Order Details:\n";
         cart.forEach(item => {
-            summary += `- ${item.title} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+            summary += `- ${item.title} (x${item.quantity}) - ₹${(item.price * item.quantity)}\n`;
         });
         const orderSummaryField = document.getElementById('order-summary');
         if (orderSummaryField) {
@@ -269,13 +245,20 @@ if (orderForm) {
             const data = await response.json();
 
             if (response.ok) {
-                // Wait for animation to finish (approx 10s) or at least show it for a while
-                // The animation logic from the user snippet removes the class after 10s.
-                // We should probably wait for the animation to complete before showing the success alert/resetting.
-
                 setTimeout(() => {
                     orderBtn.classList.remove('animate');
                     alert("Success! Your order has been placed.");
+
+                    // Update Location in Header
+                    const city = formData.get('City');
+                    const pincode = formData.get('Pincode');
+                    if (city && pincode) {
+                        const locationEl = document.querySelector('.location-info strong');
+                        if (locationEl) {
+                            locationEl.innerText = `${city}, ${pincode}`;
+                        }
+                    }
+
                     orderForm.reset();
 
                     // Close the modal
@@ -300,3 +283,170 @@ if (orderForm) {
         }
     });
 }
+
+// Product Modal Logic
+const productModal = document.getElementById('product-modal');
+const closeProductModal = document.getElementById('close-product-modal');
+const modalMainImage = document.getElementById('modal-main-image');
+const modalTitle = document.getElementById('modal-title');
+const modalPrice = document.getElementById('modal-price');
+const modalDescription = document.getElementById('modal-description');
+const modalThumbnails = document.getElementById('modal-thumbnails');
+const modalAddToCart = document.getElementById('modal-add-to-cart');
+
+function openProductModal(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    modalTitle.innerText = product.title;
+    modalPrice.innerText = '?' + product.price;
+    modalDescription.innerText = product.description || 'No description available.';
+    modalMainImage.src = product.image;
+
+    // Setup Add to Cart button in modal
+    modalAddToCart.onclick = () => {
+        addToCart(product.id);
+        productModal.classList.remove('open');
+    };
+
+    // Render Thumbnails
+    modalThumbnails.innerHTML = '';
+    const images = product.images || [product.image];
+
+    images.forEach(imgSrc => {
+        const thumb = document.createElement('img');
+        thumb.src = imgSrc;
+        thumb.className = 'modal-thumbnail';
+        if (imgSrc === product.image) thumb.classList.add('active');
+
+        thumb.onclick = () => {
+            modalMainImage.src = imgSrc;
+            document.querySelectorAll('.modal-thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        };
+
+        modalThumbnails.appendChild(thumb);
+    });
+
+    productModal.classList.add('open');
+}
+
+if (closeProductModal) {
+    closeProductModal.addEventListener('click', () => {
+        productModal.classList.remove('open');
+    });
+}
+
+window.addEventListener('click', (e) => {
+    if (e.target === productModal) {
+        productModal.classList.remove('open');
+    }
+});
+
+// Address Modal Logic
+const addressModal = document.getElementById('address-modal');
+const closeAddressModal = document.getElementById('close-address-modal');
+const locationPicker = document.querySelector('.location-picker');
+const addressForm = document.getElementById('address-form');
+
+// Open Address Modal
+if (locationPicker) {
+    locationPicker.addEventListener('click', () => {
+        addressModal.style.display = 'flex';
+        // Pre-fill if data exists
+        const savedAddress = localStorage.getItem('kk_delivery_address');
+        if (savedAddress) {
+            const addr = JSON.parse(savedAddress);
+            document.getElementById('addr-name').value = addr.name || '';
+            document.getElementById('addr-phone1').value = addr.phone1 || '';
+            document.getElementById('addr-phone2').value = addr.phone2 || '';
+            document.getElementById('addr-house').value = addr.house || '';
+            document.getElementById('addr-road').value = addr.road || '';
+            document.getElementById('addr-pincode').value = addr.pincode || '';
+            document.getElementById('addr-city').value = addr.city || '';
+            document.getElementById('addr-state').value = addr.state || 'Kerala';
+        }
+    });
+}
+
+// Close Address Modal
+if (closeAddressModal) {
+    closeAddressModal.addEventListener('click', () => {
+        addressModal.style.display = 'none';
+    });
+}
+
+// Close on outside click
+window.addEventListener('click', (e) => {
+    if (e.target === addressModal) {
+        addressModal.style.display = 'none';
+    }
+});
+
+// Save Address
+if (addressForm) {
+    addressForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const addressData = {
+            name: document.getElementById('addr-name').value,
+            phone1: document.getElementById('addr-phone1').value,
+            phone2: document.getElementById('addr-phone2').value,
+            house: document.getElementById('addr-house').value,
+            road: document.getElementById('addr-road').value,
+            pincode: document.getElementById('addr-pincode').value,
+            city: document.getElementById('addr-city').value,
+            state: document.getElementById('addr-state').value
+        };
+
+        // Save to LocalStorage
+        localStorage.setItem('kk_delivery_address', JSON.stringify(addressData));
+
+        // Update UI
+        updateLocationHeader(addressData.city, addressData.pincode);
+
+        // Close Modal
+        addressModal.style.display = 'none';
+        alert('Address Saved Successfully!');
+    });
+}
+
+function updateLocationHeader(city, pincode) {
+    const locationEl = document.querySelector('.location-info strong');
+    if (locationEl && city && pincode) {
+        locationEl.innerText = city + ', ' + pincode;
+    }
+}
+
+// Load Saved Address on Init
+document.addEventListener('DOMContentLoaded', () => {
+    const savedAddress = localStorage.getItem('kk_delivery_address');
+    if (savedAddress) {
+        const addr = JSON.parse(savedAddress);
+        updateLocationHeader(addr.city, addr.pincode);
+    }
+});
+
+// Auto-fill Order Form when opened
+const checkoutBtnRef = document.querySelector('.checkout-btn');
+if (checkoutBtnRef) {
+    checkoutBtnRef.addEventListener('click', () => {
+        const savedAddress = localStorage.getItem('kk_delivery_address');
+        if (savedAddress) {
+            const addr = JSON.parse(savedAddress);
+            // Fill the order form fields by name attribute
+            const form = document.getElementById('order-form');
+            if (form) {
+                if (addr.name) form.querySelector('[name=\"Full_Name\"]').value = addr.name;
+                if (addr.phone1) form.querySelector('[name=\"Phone_1\"]').value = addr.phone1;
+                if (addr.phone2) form.querySelector('[name=\"Phone_2\"]').value = addr.phone2;
+                if (addr.house) form.querySelector('[name=\"House_Building_Details\"]').value = addr.house;
+                if (addr.road) form.querySelector('[name=\"Road_Area_Colony\"]').value = addr.road;
+                if (addr.pincode) form.querySelector('[name=\"Pincode\"]').value = addr.pincode;
+                if (addr.city) form.querySelector('[name=\"City\"]').value = addr.city;
+                if (addr.state) form.querySelector('[name=\"State\"]').value = addr.state;
+            }
+        }
+    });
+}
+
